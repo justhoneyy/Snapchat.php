@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SnapTest - Log In</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>SnapTest - Log In</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body style="margin:0; font-family:sans-serif; background-color:#f9f9f9; display:flex; flex-direction:column; align-items:center; justify-content:center; height:100vh;">
+<body style="margin: 0; padding: 0; font-family: sans-serif; background-color: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh;">
 
-    <div style="width:100%; max-width:400px; padding:20px; background:#fff; box-shadow:0 0 10px rgba(0,0,0,0.1); border-radius:10px;">
-        <div style="text-align:center; margin-bottom:20px;">
-            <div style="font-size:40px; font-weight:bold; color:#FFFC00; background:#000; padding:10px; border-radius:10px;">SnapTest</div>
-            <p style="margin-top:10px; color:#666;">Log in to your SnapTest account</p>
-        </div>
-        <form method="POST" action="/login">
-            <label for="username">Username or Email</label>
-            <input type="text" name="username" id="username" required style="width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px;">
-            
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required style="width:100%; padding:10px; margin:10px 0; border:1px solid #ccc; border-radius:5px;">
-            
-            <button type="submit" style="width:100%; padding:12px; background-color:#FFFC00; color:#000; font-weight:bold; border:none; border-radius:5px;">Log In</button>
-        </form>
-        <p style="margin-top:15px; text-align:center; font-size:12px; color:#999;">This is a demo for educational use only.</p>
+  <div style="
+    background-color: white;
+    width: 90%;
+    max-width: 380px;
+    padding: 28px 24px;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  ">
+
+    <!-- Logo Replacement -->
+    <div style="font-size: 48px; margin-bottom: 16px;">📷</div>
+
+    <h2 style="margin: 0 0 20px 0; color: #222; font-size: 22px; text-align: center;">
+      Log in to SnapTest
+    </h2>
+
+    <form method="POST" action="/login" style="width: 100%; display: flex; flex-direction: column; gap: 14px;">
+
+      <input type="text" name="username" placeholder="Username or Email" required
+             style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; width: 100%;">
+
+      <input type="password" name="password" placeholder="Password" required
+             style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; width: 100%;">
+
+      <div style="text-align: right; font-size: 12px;">
+        <a href="#" style="text-decoration: none; color: #777;">Forgot Password</a>
+      </div>
+
+      <button type="submit" style="
+        padding: 12px;
+        background-color: #FFFC00;
+        color: black;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+      ">Log In</button>
+
+    </form>
+
+    <div style="margin-top: 20px; font-size: 14px; text-align: center;">
+      New to SnapTest? <a href="#" style="color: black; font-weight: bold; text-decoration: none;">Sign Up</a>
     </div>
 
+  </div>
 </body>
-      </html>
-      
+</html>
