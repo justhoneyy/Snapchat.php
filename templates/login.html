@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SnapTest - Log In</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snapchat Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+  </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: sans-serif; background-color: #f2f2f2; display: flex; justify-content: center; align-items: center; height: 100vh;">
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
 
-  <div style="
-    background-color: white;
-    width: 90%;
-    max-width: 380px;
-    padding: 28px 24px;
-    border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  ">
-
-    <!-- Logo Replacement -->
-    <div style="font-size: 48px; margin-bottom: 16px;">📷</div>
-
-    <h2 style="margin: 0 0 20px 0; color: #222; font-size: 22px; text-align: center;">
-      Log in to SnapTest
-    </h2>
-
-    <form method="POST" action="/login" style="width: 100%; display: flex; flex-direction: column; gap: 14px;">
-
-      <input type="text" name="username" placeholder="Username or Email" required
-             style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; width: 100%;">
-
-      <input type="password" name="password" placeholder="Password" required
-             style="padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; box-sizing: border-box; width: 100%;">
-
-      <div style="text-align: right; font-size: 12px;">
-        <a href="#" style="text-decoration: none; color: #777;">Forgot Password</a>
-      </div>
-
-      <button type="submit" style="
-        padding: 12px;
-        background-color: #FFFC00;
-        color: black;
-        font-weight: bold;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        cursor: pointer;
-      ">Log In</button>
-
-    </form>
-
-    <div style="margin-top: 20px; font-size: 14px; text-align: center;">
-      New to SnapTest? <a href="#" style="color: black; font-weight: bold; text-decoration: none;">Sign Up</a>
+  <div class="bg-white w-full max-w-sm md:max-w-md rounded-2xl shadow-lg p-8 text-center">
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/1200px-Snapchat_logo.svg.png" alt="Snapchat Logo" class="h-14 w-14">
     </div>
 
+    <!-- Heading -->
+    <h1 class="text-2xl font-bold mb-4 text-gray-800">Log in to Snapchat</h1>
+
+    <!-- Form -->
+    <form>
+      <div class="mb-4 text-left">
+        <label for="email" class="block text-sm font-medium text-gray-700">Username or Email</label>
+        <input type="text" id="email" name="email" class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="Enter your username or email" />
+      </div>
+
+      <div class="mb-4 text-left">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input type="password" id="password" name="password" class="mt-1 w-full rounded-lg border border-gray-300 px-4 py-2 focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="Enter your password" />
+      </div>
+
+      <div class="flex justify-end text-sm mb-6">
+        <a href="#" class="text-gray-500 hover:text-gray-700">Forgot Password?</a>
+      </div>
+
+      <button type="submit" class="bg-yellow-400 hover:bg-yellow-300 transition-all text-black font-semibold py-2 px-6 rounded-full w-full">
+        Log In
+      </button>
+    </form>
+
+    <!-- Sign Up -->
+    <p class="mt-6 text-sm text-gray-600">
+      New to Snapchat?
+      <a href="#" class="font-semibold text-black hover:underline">Sign Up</a>
+    </p>
   </div>
+
 </body>
 </html>
