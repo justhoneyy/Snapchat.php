@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login – MySecureApp</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       box-sizing: border-box;
@@ -12,7 +13,7 @@
     }
 
     body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -153,7 +154,7 @@
       margin: 0 auto;
     }
 
-    /* --- Mobile View Fix --- */
+    /* --- Mobile View FIXED --- */
     @media (max-width: 768px) {
       body {
         background: linear-gradient(to bottom, #2a2c31, #1e1f22);
@@ -179,8 +180,9 @@
 
       .mobile-logo {
         display: block;
-        width: 150px;
+        width: 180px;
         margin: 35px auto 10px;
+        animation: fadeIn 1s ease-in-out;
       }
 
       .left h2 {
@@ -198,6 +200,7 @@
         width: 100%;
         max-width: 400px;
         padding: 0 20px;
+        animation: fadeIn 0.7s ease-in-out;
       }
 
       label {
@@ -260,6 +263,11 @@
       }
     }
 
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .mobile-logo {
       display: none;
     }
@@ -268,8 +276,8 @@
 <body>
   <div class="container">
     <div class="left">
-      <!-- ✅ Safe PNG Logo (won’t break layout) -->
-      <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/9/98/Discord_logo_new.png" alt="Discord Logo" />
+      <!-- ✅ Pixel-perfect white Discord logo w/ text -->
+      <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/31/Discord-logo-white.png" alt="Discord logo white with text" />
 
       <h2>Welcome back!</h2>
       <p class="subtext">We're so excited to see you again!</p>
@@ -298,5 +306,5 @@
     </div>
   </div>
 </body>
-        </html>
-        
+                           </html>
+                           
