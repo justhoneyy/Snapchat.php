@@ -4,30 +4,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snapchat Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #fafafa;
+            margin: 0;
+            padding: 0;
         }
 
         .snapchat-logo {
-            font-size: 48px;
-            color: #FFFC00;
+            width: 50px;
+            height: auto;
+            margin-bottom: 20px;
         }
 
         .form-container {
             background-color: white;
             border-radius: 20px;
             padding: 40px;
-            width: 300px;
+            width: 90%;
+            max-width: 400px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
         }
 
         .btn-login {
             background-color: #FFFC00;
             color: black;
-            padding: 12px;
+            padding: 14px;
             font-size: 16px;
             width: 100%;
             border-radius: 20px;
@@ -51,26 +55,49 @@
         .link:hover {
             text-decoration: underline;
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 30px;
+            }
+
+            .btn-login {
+                font-size: 14px;
+                padding: 12px;
+            }
+
+            .snapchat-logo {
+                width: 40px;
+            }
+        }
     </style>
 </head>
-<body class="flex justify-center items-center h-screen">
+<body class="flex justify-center items-center h-screen bg-[#fafafa]">
     <div class="form-container">
-        <div class="text-center mb-4">
-            <i class="fab fa-snapchat-ghost snapchat-logo"></i>
-        </div>
-        <h2 class="text-center text-2xl font-bold mb-4">Log in to Snapchat</h2>
+        <!-- Snapchat Logo -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Snapchat_logo_2020.svg" alt="Snapchat Logo" class="snapchat-logo">
+
+        <!-- Form Title -->
+        <h2 class="text-center text-2xl font-bold mb-4 text-black">Log in to Snapchat</h2>
+
+        <!-- Form Fields -->
         <form>
             <div class="mb-4">
-                <input type="text" placeholder="Username or Email" class="w-full p-3 border border-gray-300 rounded-lg">
+                <input type="text" placeholder="Username or Email" class="w-full p-3 border border-gray-300 rounded-lg text-lg">
             </div>
             <div class="mb-4">
-                <input type="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded-lg">
+                <input type="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded-lg text-lg">
             </div>
+
+            <!-- Forgot Password and Login Button -->
             <div class="flex justify-between items-center mb-4">
                 <button type="submit" class="btn-login">Log In</button>
                 <a href="#" class="text-sm text-blue-500 link">Forgot Password?</a>
             </div>
         </form>
+
+        <!-- Sign Up Prompt -->
         <div class="text-center">
             <p class="text-muted">New to Snapchat? <a href="#" class="link font-semibold">Sign Up</a></p>
         </div>
