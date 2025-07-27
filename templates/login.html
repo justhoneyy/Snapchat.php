@@ -13,9 +13,9 @@
         }
 
         .snapchat-logo {
-            width: 50px;
+            width: 90px;
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
 
         .form-container {
@@ -23,7 +23,7 @@
             border-radius: 20px;
             padding: 40px;
             width: 90%;
-            max-width: 400px;
+            max-width: 380px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin: 0 auto;
         }
@@ -33,6 +33,7 @@
             color: black;
             padding: 14px;
             font-size: 16px;
+            font-weight: bold;
             width: 100%;
             border-radius: 20px;
             cursor: pointer;
@@ -56,6 +57,22 @@
             text-decoration: underline;
         }
 
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #fffc00;
+        }
+
         /* Mobile adjustments */
         @media (max-width: 480px) {
             .form-container {
@@ -68,7 +85,7 @@
             }
 
             .snapchat-logo {
-                width: 40px;
+                width: 80px;
             }
         }
     </style>
@@ -84,10 +101,10 @@
         <!-- Form Fields -->
         <form>
             <div class="mb-4">
-                <input type="text" placeholder="Username or Email" class="w-full p-3 border border-gray-300 rounded-lg text-lg">
+                <input type="text" placeholder="Username or Email" class="input-field">
             </div>
             <div class="mb-4">
-                <input type="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded-lg text-lg">
+                <input type="password" placeholder="Password" class="input-field">
             </div>
 
             <!-- Forgot Password and Login Button -->
