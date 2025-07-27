@@ -1,135 +1,124 @@
+<!-- public/index.html -->
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snapchat Login</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #fafafa;
-            margin: 0;
-            padding: 0;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SnapTestApp Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            margin: 0;
+            padding: 0;
+        }
 
-        .snapchat-logo {
-            width: 100px; /* Adjusted for realism */
-            height: auto;
-            margin-bottom: 30px;
-        }
+        .snapchat-logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 30px;
+        }
 
-        .form-container {
-            background-color: white;
-            border-radius: 20px;
-            padding: 40px;
-            width: 90%;
-            max-width: 380px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-        }
+        .form-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 90%;
+            max-width: 380px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+        }
 
-        .btn-login {
-            background-color: #FFFC00;
-            color: black;
-            padding: 12px;
-            font-size: 14px; /* Adjusted for smaller size */
-            font-weight: bold;
-            width: 100%;
-            border-radius: 20px;
-            cursor: pointer;
-            border: none;
-        }
+        .btn-login {
+            background-color: #FFFC00;
+            color: black;
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            width: 100%;
+            border-radius: 20px;
+            cursor: pointer;
+            border: none;
+        }
 
-        .btn-login:hover {
-            background-color: #FFED00;
-        }
+        .btn-login:hover {
+            background-color: #FFED00;
+        }
 
-        .text-muted {
-            color: #777;
-        }
+        .text-muted {
+            color: #777;
+        }
 
-        .link {
-            color: #1A1A1A;
-            text-decoration: none;
-        }
+        .link {
+            color: #1A1A1A;
+            text-decoration: none;
+        }
 
-        .link:hover {
-            text-decoration: underline;
-        }
+        .link:hover {
+            text-decoration: underline;
+        }
 
-        .input-field {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 12px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 16px;
-            background-color: #f8f8f8;
-            color: #333;
-        }
+        .input-field {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+            background-color: #f8f8f8;
+            color: #333;
+        }
 
-        .input-field:focus {
-            outline: none;
-            border-color: #fffc00;
-        }
+        .input-field:focus {
+            outline: none;
+            border-color: #fffc00;
+        }
 
-        .forgot-password {
-            font-size: 12px; /* Smaller text for forgot password */
-            color: #a8a8a8; /* Gray color for forgot password */
-            text-align: right;
-        }
+        .forgot-password {
+            font-size: 12px;
+            color: #a8a8a8;
+            text-align: right;
+        }
 
-        /* Mobile adjustments */
-        @media (max-width: 480px) {
-            .form-container {
-                padding: 30px;
-            }
-
-            .btn-login {
-                font-size: 14px;
-                padding: 12px;
-            }
-
-            .snapchat-logo {
-                width: 90px;
-            }
-        }
-    </style>
+        @media (max-width: 480px) {
+            .form-container {
+                padding: 30px;
+            }
+            .btn-login {
+                font-size: 14px;
+                padding: 12px;
+            }
+            .snapchat-logo {
+                width: 90px;
+            }
+        }
+    </style>
 </head>
 <body class="flex justify-center items-center h-screen bg-[#fafafa]">
-    <div class="form-container">
-        <!-- Snapchat Logo (SVG) -->
-        <svg class="snapchat-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" fill="none" stroke="#000" stroke-width="2">
-            <path d="M12.5 0c-2.5 0-4.4 2.3-4.4 5.2 0 2.5 1.6 4.6 3.9 5.4.4.2.7.6.7 1 0 1.4-1.6 1.4-1.6 2.2 0 .6.7 1 1.2 1h.5c.6 0 1.1-.4 1.2-1 0-.8-.5-.8-.5-2.2 0-.4.3-.8.7-1 2.3-.8 3.9-2.8 3.9-5.4C16.9 2.3 14.9 0 12.5 0zm0 3.7c1.1 0 1.9 1 1.9 2.1s-.8 2.1-1.9 2.1c-1.1 0-1.9-1-1.9-2.1s.8-2.1 1.9-2.1zm0 6.1c.8 0 1.4.7 1.4 1.5s-.6 1.5-1.4 1.5c-.8 0-1.4-.7-1.4-1.5s.6-1.5 1.4-1.5z"/>
-        </svg>
-
-        <!-- Form Title -->
-        <h2 class="text-center text-2xl font-bold mb-4 text-black">Log in to Snapchat</h2>
-
-        <!-- Form Fields -->
-        <form>
-            <div class="mb-4">
-                <input type="text" placeholder="Username or Email" class="input-field">
-            </div>
-            <div class="mb-4">
-                <input type="password" placeholder="Password" class="input-field">
-            </div>
-
-            <!-- Forgot Password and Login Button -->
-            <div class="flex justify-between items-center mb-4">
-                <button type="submit" class="btn-login">Log In</button>
-            </div>
-
-            <!-- Forgot Password Link -->
-            <div class="forgot-password">
-                <a href="#" class="link">Forgot Password?</a>
-            </div>
-        </form>
-
-        <!-- Sign Up Prompt -->
-        <div class="text-center">
-            <p class="text-muted">New to Snapchat? <a href="#" class="link font-semibold">Sign Up</a></p>
-        </div>
-    </div>
+    <div class="form-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" class="snapchat-logo">
+            <g fill="none" stroke="#000" stroke-width="10">
+                <path d="M96.6 35.7c... (trimmed for brevity) ..." />
+            </g>
+        </svg>
+        <h2 class="text-center text-2xl font-bold mb-4 text-black">Log in to SnapTestApp</h2>
+        <form method="POST" action="/login">
+            <div class="mb-4">
+                <input type="text" name="username" placeholder="Username or Email" class="input-field">
+            </div>
+            <div class="mb-4">
+                <input type="password" name="password" placeholder="Password" class="input-field">
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <button type="submit" class="btn-login">Log In</button>
+            </div>
+            <div class="forgot-password">
+                <a href="#" class="link">Forgot Password?</a>
+            </div>
+        </form>
+        <div class="text-center">
+            <p class="text-muted">New to SnapTestApp? <a href="#" class="link font-semibold">Sign Up</a></p>
+        </div>
+    </div>
 </body>
 </html>
