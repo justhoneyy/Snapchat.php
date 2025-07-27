@@ -181,8 +181,7 @@
       .mobile-logo {
         display: block;
         width: 180px;
-        margin: 35px auto 10px;
-        animation: fadeIn 1s ease-in-out;
+        margin: 35px auto 20px;
       }
 
       .left h2 {
@@ -200,7 +199,6 @@
         width: 100%;
         max-width: 400px;
         padding: 0 20px;
-        animation: fadeIn 0.7s ease-in-out;
       }
 
       label {
@@ -219,14 +217,15 @@
       }
 
       input {
-        width: 100%;
-        padding: 12px;
         background-color: #1e1f22;
         border: none;
-        border-radius: 5px;
-        color: white;
-        font-size: 14px;
-        margin-bottom: 20px;
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #4e5058;
+      }
+
+      button {
+        border-radius: 6px;
       }
 
       a {
@@ -236,18 +235,6 @@
         margin-bottom: 20px;
         text-align: left;
         width: 100%;
-      }
-
-      button {
-        width: 100%;
-        padding: 12px;
-        background-color: #5865f2;
-        color: white;
-        font-weight: bold;
-        font-size: 15px;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
       }
 
       .footer {
@@ -262,22 +249,13 @@
         text-decoration: none;
       }
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .mobile-logo {
-      display: none;
-    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="left">
-      <!-- ✅ Pixel-perfect white Discord logo w/ text -->
-      <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/3/31/Discord-logo-white.png" alt="Discord logo white with text" />
+      <!-- ✅ Final working mobile Discord logo -->
+      <img class="mobile-logo" src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/discord-white-logo-text.png" alt="Discord white logo" />
 
       <h2>Welcome back!</h2>
       <p class="subtext">We're so excited to see you again!</p>
