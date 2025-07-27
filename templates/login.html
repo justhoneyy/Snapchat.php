@@ -5,73 +5,91 @@
   <title>Login – MySecureApp</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Reset and base */
     * { box-sizing: border-box; margin:0; padding:0; }
-    body { font-family:'Inter',Helvetica,Arial,sans-serif; background:#313338; }
-    .container{display:flex; max-width:900px; width:100%; height:100vh; justify-content:center; align-items:center;}
-    @media (min-width:769px){ body{background:url('https://encrypted‑tbn0.gstatic.com/images?q=tbn:ANd9GcRJq7p812cjimwGXUviON7suVfdym1Yds1‑fOPWeJ89v3Rh1PyaI‑8L5zU&s=10') center/cover no-repeat; } }
-    .window{background:#2f3136; border-radius:8px; box-shadow:0 0 15px rgba(0,0,0,0.5); overflow:hidden; display:flex; width:100%; max-width:900px; }
-    .left,.right{flex:1; padding:40px; display:flex; flex-direction:column; justify-content:center;}
+    body {
+      font-family:'Inter',Helvetica,Arial,sans-serif;
+      display:flex;align-items:center;justify-content:center;
+      min-height:100vh;
+      background-color:#313338;
+      padding:20px;
+    }
+    @media(min-width:769px){
+      body{
+        background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJq7p812cjimwGXUviON7suVfdym1Yds1-fOPWeJ89v3Rh1PyaI-8L5zU&s=10');
+        background-size:cover;
+        background-position:center;
+      }
+    }
+    .window {
+      display:flex; width:100%; max-width:900px;
+      background:#2f3136; border-radius:8px; overflow:hidden;
+      box-shadow:0 0 15px rgba(0,0,0,0.5);
+    }
+    .left, .right {
+      flex:1; padding:40px; display:flex;
+      flex-direction:column; justify-content:center;
+    }
+    /* Common text/form styles */
     h2{font-size:24px;color:#fff;font-weight:700;margin-bottom:8px;}
-    .subtext{color:#b9bbbe;font-size:14px;margin-bottom:20px;}
-    label{font-size:12px;font-weight:700;color:#b9bbbe;margin-bottom:5px;text-align:left;}
-    input,button{width:100%;font-size:14px;padding:12px;}
+    .subtext{font-size:14px;color:#b9bbbe;margin-bottom:20px;}
+    label{font-size:12px;color:#b9bbbe;font-weight:700;margin-bottom:5px;text-align:left;}
+    input,button{width:100%;padding:12px;font-size:14px;}
     input{background:#1e1f22;color:#fff;border:none;border-radius:4px;margin-bottom:20px;}
     input:focus{background:#2b2d31;outline:none;}
-    button{background:#5865f2;color:#fff;font-weight:600;border:none;border-radius:4px;cursor:pointer;transition:.2s;}
+    button{background:#5865f2;color:#fff;border:none;border-radius:4px;font-weight:600;cursor:pointer;transition:.2s;}
     button:hover{background:#4752c4;transform:translateY(-1px);}
-    a{color:#00a8fc;text-decoration:none;font-size:12px;margin-bottom:20px;text-align:left;display:inline-block;}
+    a{font-size:12px;color:#00a8fc;text-decoration:none;display:inline-block;margin-bottom:20px;text-align:left;}
     .footer{font-size:12px;color:#b9bbbe;text-align:center;margin-top:20px;}
     .footer a{color:#00a8fc;}
-    .right img{width:130px;height:130px;margin-bottom:15px;}
-    .right h3{color:#fff;font-size:16px;font-weight:700;margin-bottom:10px;}
-    .right p{color:#b9bbbe;font-size:12px;max-width:240px;margin:0 auto;}
-    /* Preloader overlay */
-    .preloader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(20,21,23,0.85);display:flex;align-items:center;justify-content:center;z-index:9999;}
-    .spinner-wandering-cubes{position:relative;width:20px;height:20px;}
-    .spinner-wandering-cubes .cube{width:10px;height:10px;background:#7289da;position:absolute;animation:spinCube 1.8s infinite ease-in-out;}
-    .spinner-wandering-cubes .cube:nth-child(2){animation-delay:-0.9s;}
-    @keyframes spinCube {
-      25%{transform:translateX(22px) rotate(-90deg) scale(.5);}
-      50%{transform:translateX(22px) translateY(22px) rotate(-180deg);}
-      75%{transform:translateX(0) translateY(22px) rotate(-270deg) scale(.5);}
-      to{transform:rotate(-360deg);}
-    }
-    /* Mobile adjustments and removing animations */
+
+    /* QR container on PC */
+    .qr-container{cursor:pointer;text-align:center;}
+    .qr-container img{width:130px;height:130px;margin-bottom:15px;}
+    .qr-text{font-size:12px;color:#b9bbbe;margin-top:8px;}
+
+    /* Mobile-only overrides */
     @media(max-width:768px){
       body{background:linear-gradient(to bottom,#2a2c31,#1e1f22);}
       .window{flex-direction:column;border-radius:0;box-shadow:none;}
       .right{display:none;}
       .left{padding:0;text-align:center;align-items:center;}
-      .mobile-logo{display:block;width:180px;margin:35px auto 20px;}
-      h2{font-size:22px;color:#fff;}
+      /* logo only mobile */
+      .mobile-logo{display:block;width:160px;margin:30px auto 10px;}
+      h2{font-size:22px;margin:10px 0;color:#fff;}
       .subtext{display:none;}
       form{width:100%;max-width:400px;padding:0 20px;}
-      label{font-size:11px;text-transform:uppercase;color:#b9bbbe;}
+      label{font-size:11px;text-transform:uppercase;color:#b9bbbe;width:100%;margin-bottom:5px;}
       label::after{content:' *';color:#ed4245;}
       input{background:#1e1f22;color:#fff;border:none;border-radius:0;box-shadow:none;outline:none;margin-bottom:15px;}
       button{border-radius:6px;}
       a{font-size:13px;width:100%;text-align:left;margin-bottom:20px;}
       .footer{font-size:13px;margin:25px 0;}
     }
-    /* QR refresh styling on PC */
-    .qr-container{position:relative;display:inline-block;cursor:pointer;}
-    .qr-text{font-size:12px;color:#b9bbbe;margin-top:8px;text-align:center;}
+
+    /* Logo hidden on PC */
+    .mobile-logo{display:none;}
+
+    /* Loader animation */
+    .preloader{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(20,21,23,0.85);display:flex;align-items:center;justify-content:center;z-index:999;}
+    .spinner{width:20px;height:20px;position:relative;}
+    .spinner div{width:10px;height:10px;background:#7289da;position:absolute;animation:spin 1.6s infinite ease-in-out;}
+    .spinner div:nth-child(2){animation-delay:-0.8s;}
+    @keyframes spin{
+      25%{transform:translateX(22px) rotate(-90deg) scale(.5);}
+      50%{transform:translateX(22px) translateY(22px) rotate(-180deg);}
+      75%{transform:translateX(0) translateY(22px) rotate(-270deg) scale(.5);}
+      100%{transform:rotate(-360deg);}
+    }
   </style>
 </head>
 <body>
 
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-  <div class="spinner-wandering-cubes">
-    <div class="cube"></div><div class="cube"></div>
-  </div>
-</div>
+<div class="preloader" id="loader"><div class="spinner"><div></div><div></div></div></div>
 
 <div class="container">
   <div class="window">
     <div class="left">
-      <img class="mobile-logo" src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/discord-white-logo-text.png" alt="Discord logo" />
+      <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Discord_white_textlogo_%282021%29.svg/2560px-Discord_white_textlogo_%282021%29.svg.png" alt="Discord logo">
       <h2>Welcome back!</h2>
       <p class="subtext">We're so excited to see you again!</p>
       <form>
@@ -84,25 +102,21 @@
     </div>
     <div class="right">
       <div class="qr-container" id="qr">
-        <img src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/qr-sample.png" alt="QR code" />
+        <img src="https://cdn.jsdelivr.net/gh/rajatkulkarni95/CDN/qr-sample.png" alt="QR code">
         <div class="qr-text" id="qr-text">Refresh QR</div>
       </div>
-      <h3>Log in with QR Code</h3>
-      <p>Scan this with the <strong>Discord</strong> mobile app to log in instantly.</p>
+      <h3 style="color:#fff;font-size:16px;font-weight:700;margin-bottom:10px;">Log in with QR Code</h3>
+      <p style="color:#b9bbbe;font-size:12px;max-width:240px;margin:0 auto;">Scan with the Discord mobile app to log in instantly.</p>
     </div>
   </div>
 </div>
 
 <script>
-  // Hide preloader after page load
-  window.addEventListener('load', () => document.getElementById('preloader').style.display = 'none');
-
-  // QR refresh simulation
-  document.getElementById('qr').addEventListener('click', () => {
-    document.getElementById('qr-text').innerText = 'Refreshing...';
-    setTimeout(() => document.getElementById('qr-text').innerText = 'Refresh QR', 1500);
-  });
+window.addEventListener('load', ()=>document.getElementById('loader').style.display='none');
+document.getElementById('qr').addEventListener('click', ()=>{
+  const t=document.getElementById('qr-text');
+  t.innerText='Refreshing...'; setTimeout(()=>t.innerText='Refresh QR',1500);
+});
 </script>
-
 </body>
 </html>
