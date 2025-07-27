@@ -1,354 +1,79 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login – MySecureApp</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snapchat Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+        }
 
-    body {
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
-      background-color: #313338;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
+        .snapchat-logo {
+            font-size: 48px;
+            color: #FFFC00;
+        }
 
-    @media (min-width: 769px) {
-      body {
-        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJq7p812cjimwGXUviON7suVfdym1Yds1-fOPWeJ89v3Rh1PyaI-8L5zU&s=10');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-    }
+        .form-container {
+            background-color: white;
+            border-radius: 20px;
+            padding: 40px;
+            width: 300px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
 
-    .container {
-      max-width: 900px;
-      width: 100%;
-      background-color: #2f3136;
-      border-radius: 8px;
-      display: flex;
-      overflow: hidden;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    }
+        .btn-login {
+            background-color: #FFFC00;
+            color: black;
+            padding: 12px;
+            font-size: 16px;
+            width: 100%;
+            border-radius: 20px;
+            cursor: pointer;
+            border: none;
+        }
 
-    .left, .right {
-      flex: 1;
-      padding: 40px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+        .btn-login:hover {
+            background-color: #FFED00;
+        }
 
-    .left h2 {
-      font-size: 24px;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
+        .text-muted {
+            color: #777;
+        }
 
-    .subtext {
-      color: #b9bbbe;
-      font-size: 14px;
-      margin-bottom: 20px;
-    }
+        .link {
+            color: #1A1A1A;
+            text-decoration: none;
+        }
 
-    label {
-      font-size: 12px;
-      font-weight: 700;
-      color: #b9bbbe;
-      margin-bottom: 5px;
-      text-align: left;
-      display: block;
-    }
-
-    input, button {
-      width: 100%;
-      padding: 12px;
-      font-size: 14px;
-    }
-
-    input {
-      background-color: #1e1f22;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      margin-bottom: 20px;
-    }
-
-    input:focus {
-      background-color: #2b2d31;
-      outline: none;
-    }
-
-    button {
-      background-color: #5865f2;
-      color: white;
-      font-weight: 600;
-      border: none;
-      border-radius: 4px;
-      margin-top: 10px;
-      cursor: pointer;
-      transition: background-color 0.2s, transform 0.2s;
-    }
-
-    button:hover {
-      background-color: #4752c4;
-      transform: translateY(-1px);
-    }
-
-    .left a {
-      font-size: 12px;
-      color: #00a8fc;
-      text-decoration: none;
-      margin-bottom: 20px;
-      display: inline-block;
-      text-align: left;
-    }
-
-    .footer {
-      font-size: 12px;
-      text-align: center;
-      color: #b9bbbe;
-      margin-top: 20px;
-    }
-
-    .footer a {
-      color: #00a8fc;
-      text-decoration: none;
-    }
-
-    .right {
-      background-color: #2b2d31;
-      text-align: center;
-      align-items: center;
-      border-left: 1px solid #202225;
-    }
-
-    .right img {
-      width: 130px;
-      height: 130px;
-      margin-bottom: 15px;
-    }
-
-    .right h3 {
-      color: white;
-      font-size: 16px;
-      margin: 0 0 10px;
-      font-weight: 700;
-    }
-
-    .right p {
-      color: #b9bbbe;
-      font-size: 12px;
-      max-width: 240px;
-      margin: 0 auto;
-    }
-
-    .qr-container {
-      cursor: pointer;
-    }
-
-    .qr-text {
-      font-size: 12px;
-      color: #b9bbbe;
-      margin-top: 8px;
-    }
-
-    /* PRELOADER */
-    .preloader {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(20, 21, 23, 0.9);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .spinner {
-      width: 20px;
-      height: 20px;
-      position: relative;
-    }
-
-    .spinner div {
-      width: 10px;
-      height: 10px;
-      background: #7289da;
-      position: absolute;
-      animation: spin 1.6s infinite ease-in-out;
-    }
-
-    .spinner div:nth-child(2) {
-      animation-delay: -0.8s;
-    }
-
-    @keyframes spin {
-      25% {
-        transform: translateX(22px) rotate(-90deg) scale(0.5);
-      }
-      50% {
-        transform: translateX(22px) translateY(22px) rotate(-180deg);
-      }
-      75% {
-        transform: translateX(0) translateY(22px) rotate(-270deg) scale(0.5);
-      }
-      100% {
-        transform: rotate(-360deg);
-      }
-    }
-
-    /* HIDE LOGO DEFAULT */
-    .mobile-logo {
-      display: none;
-      width: 160px;
-      margin: 30px auto 10px;
-    }
-
-    /* MOBILE VIEW STYLES */
-    @media (max-width: 768px) {
-      body {
-        background: linear-gradient(to bottom, #2a2c31, #1e1f22);
-      }
-
-      .container {
-        flex-direction: column;
-        border-radius: 0;
-        box-shadow: none;
-        max-width: 100%;
-      }
-
-      .right {
-        display: none;
-      }
-
-      .left {
-        padding: 0;
-        align-items: center;
-        text-align: center;
-      }
-
-      .mobile-logo {
-        display: block;
-      }
-
-      .left h2 {
-        font-size: 22px;
-        margin: 10px 0;
-      }
-
-      .subtext {
-        display: none;
-      }
-
-      form {
-        width: 100%;
-        max-width: 400px;
-        padding: 0 20px;
-      }
-
-      label {
-        font-size: 11px;
-        text-transform: uppercase;
-        text-align: left;
-        width: 100%;
-        color: #b9bbbe;
-        margin-bottom: 5px;
-      }
-
-      label::after {
-        content: ' *';
-        color: #ed4245;
-      }
-
-      input {
-        background-color: #1e1f22;
-        color: white;
-        border: none !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        outline: none !important;
-        margin-bottom: 15px;
-      }
-
-      button {
-        border-radius: 6px;
-      }
-
-      .footer {
-        font-size: 13px;
-        margin: 25px 0;
-      }
-    }
-  </style>
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-<body>
-
-<!-- Preloader -->
-<div class="preloader" id="preloader">
-  <div class="spinner">
-    <div></div><div></div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="left">
-    <!-- ✅ MOBILE-ONLY LOGO -->
-    <img class="mobile-logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Discord_white_textlogo_%282021%29.svg/2560px-Discord_white_textlogo_%282021%29.svg.png" alt="Discord Logo" />
-    <h2>Welcome back!</h2>
-    <p class="subtext">We're so excited to see you again!</p>
-
-    <form method="POST" action="#">
-      <label for="email">Email or phone number</label>
-      <input type="email" id="email" required>
-
-      <label for="password">Password</label>
-      <input type="password" id="password" required>
-
-      <a href="#">Forgot your password?</a>
-
-      <button type="submit">Log In</button>
-    </form>
-
-    <div class="footer">
-      Need an account? <a href="#">Register</a>
+<body class="flex justify-center items-center h-screen">
+    <div class="form-container">
+        <div class="text-center mb-4">
+            <i class="fab fa-snapchat-ghost snapchat-logo"></i>
+        </div>
+        <h2 class="text-center text-2xl font-bold mb-4">Log in to Snapchat</h2>
+        <form>
+            <div class="mb-4">
+                <input type="text" placeholder="Username or Email" class="w-full p-3 border border-gray-300 rounded-lg">
+            </div>
+            <div class="mb-4">
+                <input type="password" placeholder="Password" class="w-full p-3 border border-gray-300 rounded-lg">
+            </div>
+            <div class="flex justify-between items-center mb-4">
+                <button type="submit" class="btn-login">Log In</button>
+                <a href="#" class="text-sm text-blue-500 link">Forgot Password?</a>
+            </div>
+        </form>
+        <div class="text-center">
+            <p class="text-muted">New to Snapchat? <a href="#" class="link font-semibold">Sign Up</a></p>
+        </div>
     </div>
-  </div>
-
-  <div class="right">
-    <div class="qr-container" id="qr">
-      <!-- ✅ YOUR QR IMAGE -->
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbGiahyTpqaVKNchkcj2b-E--4McvzjZGtv6spT0RuFHmbi1j8RvGwQklk&s=10" alt="QR Code">
-      <div class="qr-text" id="qr-text">Refresh QR</div>
-    </div>
-    <h3>Log in with QR Code</h3>
-    <p>Scan this with the <strong>Discord</strong> mobile app to log in instantly.</p>
-  </div>
-</div>
-
-<script>
-  // Hide preloader
-  window.addEventListener('load', () => {
-    document.getElementById('preloader').style.display = 'none';
-  });
-
-  // Simulate QR refresh
-  document.getElementById('qr').addEventListener('click', () => {
-    const t = document.getElementById('qr-text');
-    t.innerText = 'Refreshing...';
-    setTimeout(() => t.innerText = 'Refresh QR', 1500);
-  });
-</script>
 </body>
-    </html>
-    
+</html>
